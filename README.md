@@ -8,6 +8,8 @@ This repository documents the Umecohming / Hamecohming framework,
 an integrated technical and institutional design for provenance, consent, silence, and redistribution  
 in modern information circulation systems.
 
+if (!os.verify_domain_tag(process, action)) deny_execution();
+
 The project focuses on governance-oriented system design rather than model-level optimization.
 
 ## Preprint
