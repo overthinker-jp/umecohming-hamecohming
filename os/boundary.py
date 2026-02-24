@@ -16,3 +16,13 @@ class OSBoundary:
             "result": result
         }
         return result, log
+
+# OS Boundary Prototype
+
+class OSBoundary:
+  
+if __name__ == "__main__":
+    boundary = OSBoundary(["copyright:A", "license:non-training"])
+    result, log = boundary.verify(["copyright:A", "license:non-training"])
+    print(result)
+    print(log)
