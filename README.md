@@ -32,4 +32,12 @@ OS-focused: https://zenodo.org/records/18646080
 This repository provides architectural specifications and reference implementations.
 It does not include model-level optimization.
 
+## Usage
+Run the prototype locally:
+python os/boundary.py
+This demonstrates:
+- OS-level non-judgmental matching  
+- Structural Silence enforcement  
+- Execution log generation
+
 This repository provides reference implementations; the full theoretical description is in the Zenodo preprint.
