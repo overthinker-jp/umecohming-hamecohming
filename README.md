@@ -1,7 +1,7 @@
 # Hamecohming Framework
 An OS-level governance architecture for provenance, consent, structural silence, and value redistribution.
 
-<img src="https://github.com/overthinker-jp/umecohming-hamecohming/raw/54a7b748b9bafa3d54c33f3b3a61f5594f798664/os-layer-diagram.png.png" width="100%" />
+<img src="https://raw.githubusercontent.com/overthinker-jp/umecohming-hamecohming/main/os-layer-diagram.png" width="100%" />
 
 **OS-level AI governance framework enforcing execution boundaries without semantic interpretation.**
 Prevents unverifiable data from influencing AI systems via deterministic enforcement.  
