@@ -3,6 +3,9 @@ An OS-level governance architecture for provenance, consent, structural silence,
 
 <img src="https://github.com/overthinker-jp/umecohming-hamecohming/raw/54a7b748b9bafa3d54c33f3b3a61f5594f798664/os-layer-diagram.png.png" width="100%" />
 
+**OS-level AI governance framework enforcing execution boundaries without semantic interpretation.
+Prevents unverifiable data from influencing AI systems via deterministic enforcement.
+Implements provenance, consent, and domain constraints at the kernel boundary.
 
 ## Overview
 This repository documents the Umecohming / Hamecohming framework—an integrated technical and institutional architecture designed to operationalize:
