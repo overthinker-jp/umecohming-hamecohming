@@ -1,7 +1,8 @@
 # Hamecohming Framework
 An OS-level governance architecture for provenance, consent, structural silence, and value redistribution.
 
-<img width="900" height="1600" alt="corn" src="https://github.com/user-attachments/assets/0953be04-03c4-4239-a4ab-7e0dd204c8f2" />
+<img src="https://github.com/overthinker-jp/umecohming-hamecohming/raw/54a7b748b9bafa3d54c33f3b3a61f5594f798664/os-layer-diagram.png.png" width="100%" />
+
 
 ## Overview
 This repository documents the Umecohming / Hamecohming framework—an integrated technical and institutional architecture designed to operationalize:
