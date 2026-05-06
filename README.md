@@ -1,62 +1,127 @@
 # Hamecohming Framework
-An OS-level governance architecture for provenance, consent, structural silence, and value redistribution.
+
+> **OS-level AI governance that enforces boundaries — not opinions.**
+
+AI safety should not depend on whether the model makes good decisions.  
+It should depend on whether execution is permitted at the system level in the first place.
+
+This framework enforces provenance, consent, and domain constraints at the **kernel execution boundary** — deterministically, without semantic interpretation.
+
+---
+
+## The Problem
+
+Model-level alignment is probabilistic. It can be overridden by prompting, fine-tuning, or context manipulation.
+
+The Hamecohming Framework moves the enforcement point **below** the model:
+
+```text
+User/Agent Request
+      ↓
+  Tag Check  ←  Provenance / Domain / Consent
+      ↓
+ OS Boundary  ←  No semantic interpretation. Deterministic enforcement.
+      ↓
+Permit Execution  ──or──  Structural Silence (deny by structure, not by judgment)
+```
 
 <img src="https://raw.githubusercontent.com/overthinker-jp/umecohming-hamecohming/main/os-layer-diagram.png" width="100%" />
 
-**OS-level AI governance framework enforcing execution boundaries without semantic interpretation.**
-Prevents unverifiable data from influencing AI systems via deterministic enforcement.  
-Implements provenance, consent, and domain constraints at the kernel boundary.  
+---
 
-## Overview
-This repository documents the Umecohming / Hamecohming framework—an integrated technical and institutional architecture designed to operationalize:  
+## Core Logic
 
-- Provenance tracking 
-- Consent verification 
-- Structural silence 
-- Transparency-based redistribution 
-
-Rather than relying on model-level ethical optimization, this project focuses on governance-oriented system design at the OS execution boundary.
-
-## Core Principle
-```
+```c
 if (!os.verify_domain_tag(process, action)) {
-    deny_execution();
+    deny_execution();  // No interpretation. No loopholes.
 }
 ```
 
-The framework does not interpret semantics.
-It enforces boundary conditions mechanically at the execution layer.
+No model in the decision path. No prompt-injection attack surface. No "maybe".
+
+---
 
 ## Components
-Hamecohming: Institutional boundary definition  
-Umecohming: Attribute embedding and verification  
-Structural Silence: Execution halt when boundary conditions fail  
-Transparency Incentive: Redistribution logic linked to verified usage  
 
-## Public Comment (NIST)
-Submitted to NIST AI Risk Management Framework consultation  
-Focus: OS-level enforcement and non-semantic verification  
-Position: Execution-boundary design over model-based control  
-Status: Submitted (2026)  
-https://www.regulations.gov/comment/NIST-2025-0035-0083  
+| Component | Role |
+|---|---|
+| **Umecohming** | Attribute embedding & provenance tagging |
+| **Hamecohming** | Institutional boundary definition |
+| **Structural Silence** | Execution halt on unverified actions |
+| **Transparency Incentives** | Redistribution logic tied to verified usage |
 
-## Preprint
-Zenodo (Preprint / Policy Research):  
-Original shoort Version: https://zenodo.org/records/18012526  
-OS-focused: https://zenodo.org/records/18646080
+---
 
-## Scope
-This repository provides architectural specifications and reference implementations.  
-It does not include model-level optimization.  
+## Implementation
 
-## Usage
-Run the prototype locally:
-```
+### Conceptual prototype (Python)
+
+Demonstrates the boundary logic in a readable form.  
+Not OS-level; intended as a specification reference.
+
+```bash
 python os/boundary.py
 ```
-This demonstrates:
-- OS-level non-judgmental matching  
-- Structural Silence enforcement  
-- Execution log generation
 
-This repository provides reference implementations; the full theoretical description is in the Zenodo preprint.
+- Tag matching with tamper detection (SHA-256 rule hash)
+- Structural Silence that actually halts execution (`sys.exit(1)`)
+- Persistent audit log at `logs/boundary_audit.jsonl`
+
+### Kernel-level enforcement (eBPF/LSM)
+
+The production implementation enforces the same boundary conditions at the kernel syscall layer — before user-space code can execute.
+
+```bash
+# Load the LSM hook (requires root)
+sudo python ebpf/loader.py
+```
+
+See `/ebpf/` for the kernel-space implementation.
+
+> **Note:** The Python prototype is a conceptual demonstration.  
+> Actual OS-level enforcement requires the eBPF implementation.
+
+---
+
+## Threat Model / Limitations
+
+Conceptual prototype — not a secure enforcement layer.
+
+- User-space execution → integrity can be bypassed in a compromised runtime
+- `sys.exit(1)` → hard stop by design (no recovery path)
+- Audit logs → writable and not tamper-resistant
+
+Not flaws. Scope.
+
+Real enforcement begins where user-space ends — at the kernel boundary (eBPF/LSM).
+
+---
+
+## Background
+
+This framework emerged from a practical question:
+
+*Why does AI safety rely on the model saying no — when the OS can simply deny execution?*
+
+Informed by pharmacovigilance system design (adverse event detection without retraining) and applied to AI governance as an institutional architecture problem.
+
+**90/9/1 model:**
+
+- ~90% of AI interactions → probabilistic safety is sufficient
+- ~9% → context-aware gray-zone handling
+- <1% → OS-level hard stop, no exceptions
+
+---
+
+## Publications & Public Record
+
+| Type | Link |
+|---|---|
+| Notion | [Open Notion](https://wise-antimatter-790.notion.site/35667dd80dba808da854cc0621a803ea) |
+
+---
+
+## Status
+
+Active research. Independent. Not affiliated with any institution.  
+Feedback and issues welcome.
